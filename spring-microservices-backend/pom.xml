@@ -21,6 +21,7 @@
         <module>microservice-eureka</module>
         <module>microservice-config</module>
         <module>microservice-ordenes</module>
+        <module>microserver-login</module>
     </modules>
 
     <properties>

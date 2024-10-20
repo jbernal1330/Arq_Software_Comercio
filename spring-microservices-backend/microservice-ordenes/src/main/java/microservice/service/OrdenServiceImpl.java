@@ -11,7 +11,7 @@ import java.util.List;
 public class OrdenServiceImpl implements OrdenService {
 
     @Autowired
-    private OrdenRepository ordenRepository;
+    private ordenRepository ordenRepository;
 
     @Override
     public List<Orden> findAll() {
@@ -21,5 +21,15 @@ public class OrdenServiceImpl implements OrdenService {
     @Override
     public Orden findById(Long id) {
         return null;
+    }
+
+    @Override
+    public void save(Orden orden) {
+        ordenRepository.save(orden);
+    }
+
+    @Override
+    public List<Orden> findByIdOrden(Long idOrden) {
+        return ordenRepository.findAllOrdenes(idOrden);
     }
 }
