@@ -32,6 +32,6 @@ public class OrdenController {
 
     @GetMapping("/search-by-client/{idCliente}")
     public ResponseEntity<?> findByIdClient(@PathVariable Long idCliente) {
-        return ResponseEntity.ok(ordenService.findByIdClient(idCliente));
+        return ResponseEntity.ok(ordenService.findByClientId(idCliente));
     }
 }

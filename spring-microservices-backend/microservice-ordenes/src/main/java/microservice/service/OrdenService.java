@@ -12,5 +12,5 @@ public interface OrdenService {
 
     void save(Orden orden);
 
-    List<Orden> findByIdOrden(Long idOrden);
+    List<Orden> findByClientId(Long clientId);
 }
