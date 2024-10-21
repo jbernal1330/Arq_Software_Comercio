@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Añadir Producto</title>
+  <link rel="stylesheet" href="../css/agregarStyle.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>E-LOVERS</h1>
+  </header>
+  <main>
+    <h2>Añadir Producto</h2>
+    <form id="productoForm">
+      <div class="form-group card"> 
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group card">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea> 
+      </div>
+      <div class="form-group card">
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
+      </div>
+      <div class="form-group card">
+        <label for="imagen">Enlace de la Imagen:</label>
+        <input type="text" id="imagen" name="imagen" placeholder="http://example.com/imagen.jpg" required> 
+      </div>
+      <div class="form-group card">
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria">
+          <option value="">Seleccione la categoría</option>
+          <option value="celular">Celulares</option>
+          <option value="televisor">Televisores</option>
+          <option value="lavadora">Lavadoras</option>
+          <option value="accesorio">Accesorios</option>
+          <option value="electrodomésticos">Electrodomésticos</option>
+        </select>
+      </div>
+      <div class="form-group card">
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required>
+      </div>
+      
+      <button type="submit" class="card"> 
+        <i class="fas fa-plus"></i>  
+        Agregar
+      </button> 
+    </form>
+    <a href="../html/gestionInventario.html" class="card">  
+      <i class="fas fa-arrow-left"></i> 
+      Volver al Panel
+    </a> 
+  </main>
+  <script src="../javaScript/agregarScript.js" type="module"></script
+</body>
+</html>

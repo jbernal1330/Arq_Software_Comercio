@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eliminar Inventario</title>
+  <link rel="stylesheet" href="../css/eliminarStyle.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>E-LOVERS</h1>
+  </header>
+  <main>
+    <h2>Eliminar Inventario</h2>
+
+    <input type="text" id="buscarProducto" placeholder="Buscar producto...">
+
+    <table class="tabla-productos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Tipo</th>
+          <th>ID</th>
+          <th>Acciones</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ row[0] }}</td> 
+          <td>{{ row[1] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>{{ row[4] }}</td>
+          <td><button class="btn-eliminar">Eliminar</button></td> 
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="../html/gestionInventario.html" class="card"> 
+      <i class="fas fa-arrow-left"></i>
+      Volver al Panel
+    </a>
+
+  </main>
+  <script src="../javaScript/eliminarScript.js"  type="module"></script> 
+</body>
+</html>

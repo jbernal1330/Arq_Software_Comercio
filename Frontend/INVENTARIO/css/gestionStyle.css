@@ -1,0 +1,87 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Define dos columnas */
+  grid-template-rows: repeat(2, 1fr);
+  /* Define dos filas */
+  gap: 20px;
+}
+
+/* Estilo para las tarjetas (cards) */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  /* Elimina el subrayado */
+  color: black;
+  /* Cambia el color del texto a negro */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: black;
+  /* Cambia el color de los íconos a negro */
+}
+
+/* Estilo para los enlaces en sus diferentes estados */
+/* Estilo para los enlaces en sus diferentes estados */
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  /* Elimina el subrayado en cualquier estado */
+  color: black;
+  /* Mantiene el color negro en cualquier estado, incluso después de ser visitado */
+}
+
+/* Elimina cualquier estilo específico para el botón "Agregar" */
+#agregar {
+  background-color: transparent !important;
+}
+
+/* Asegúrate de que no haya estilos por defecto para los botones que causen el resaltado */
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}

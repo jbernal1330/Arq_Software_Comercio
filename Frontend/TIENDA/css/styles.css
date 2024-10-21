@@ -1,0 +1,154 @@
+/* Reset y ajustes generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #ffffff, #d0d0d0); /* Fondo blanco y gris claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container {
+    background-color: #f9f9f9; /* Color de fondo más suave */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Icono en la parte superior */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.icon {
+    font-size: 50px;
+    color: #333; /* Color oscuro */
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Texto oscuro */
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Etiquetas de los campos */
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666; /* Texto gris */
+}
+
+/* Campos de entrada */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco */
+    color: #333; /* Texto negro */
+}
+
+input::placeholder {
+    color: #aaa; /* Placeholder en gris */
+}
+
+/* Botón de inicio de sesión */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #333; /* Fondo oscuro para el botón */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #555; /* Color más oscuro al pasar el cursor */
+}
+
+/* Enlace de olvidó la contraseña */
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    font-size: 14px;
+    color: #333; /* Texto oscuro */
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Barra inferior con información */
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e9e9e9; /* Fondo gris claro */
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    margin-top: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666; /* Texto gris */
+}
+
+.info-icon {
+    font-size: 20px;
+    margin-right: 8px;
+    color: #333; /* Icono oscuro */
+}
+
+/* Sección de registro */
+.signup {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup p {
+    font-size: 14px;
+    color: #666;
+}
+
+.signup a {
+    color: #333; /* Enlace oscuro */
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}

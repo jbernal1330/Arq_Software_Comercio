@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modificar Producto - E-LOVERS</title>
+  <link rel="stylesheet" href="../css/modificarStyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>E-LOVERS</h1>
+  </header>
+  <main>
+    <h2>Modificar Inventario</h2>
+
+    <input type="text" id="buscarProducto" placeholder="Buscar producto"> 
+
+    <div class="tabla-productos">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th> <!-- Nueva columna de descripción -->
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>ID</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se generarán los productos dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+    
+    <h2>Modificar Producto</h2>
+    <form id="productoForm">
+      <div class="form-group card">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group card">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion"></textarea> <!-- Campo para la descripción -->
+      </div>
+      <div class="form-group card">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required>
+      </div>
+      <div class="form-group card">
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
+      </div>
+      <div class="form-group card">
+        <label for="tipo">Tipo de producto:</label>
+        <select id="tipo" name="tipo">
+          <option value="">Seleccione el tipo</option>
+          <option value="celular">Celulares</option>
+          <option value="televisor">Televisores</option>
+          <option value="lavadora">Lavadoras</option>
+          <option value="accesorio">Accesorios</option>
+          <option value="electromésticos">Electrodomésticos</option>
+        </select>
+      </div>
+      <div class="form-group card">
+        <label for="id">ID único:</label>
+        <input type="text" id="id" name="id" required>
+      </div>
+      <button type="submit" class="card">
+        <i class="fas fa-pencil-alt"></i>
+        Modificar
+      </button>
+    </form>
+
+    <a href="../html/gestionInventario.html" class="card">
+      <i class="fas fa-arrow-left"></i>
+      Volver al Panel
+    </a>
+  </main>
+  <script src="../javaScript/modificarScript.js" type="module"></script>
+</body>
+</html>
