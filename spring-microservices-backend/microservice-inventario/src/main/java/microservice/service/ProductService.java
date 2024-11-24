@@ -1,7 +1,7 @@
 
-package com.microservice.inventario.service;
+package microservice.service;
 
-import com.microservice.inventario.dto.ProductDTO;
+import microservice.dto.ProductDTO;
 import java.util.List;
 
 public interface ProductService {

@@ -1,5 +1,5 @@
 
-package com.microservice.inventario.entities;
+package microservice.entities;
 
 import jakarta.persistence.*;
 

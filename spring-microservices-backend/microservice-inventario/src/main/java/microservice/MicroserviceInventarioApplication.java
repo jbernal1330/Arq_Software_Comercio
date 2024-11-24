@@ -1,4 +1,4 @@
-package com.microservice.inventario.microservice_inventario;
+package microservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

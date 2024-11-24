@@ -1,5 +1,5 @@
 
-package com.microservice.inventario.dto;
+package microservice.dto;
 
 public class ProductDTO {
 

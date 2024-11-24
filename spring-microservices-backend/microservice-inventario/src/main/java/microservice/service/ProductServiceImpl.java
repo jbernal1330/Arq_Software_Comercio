@@ -1,9 +1,8 @@
 
-package com.microservice.inventario.service;
-
-import com.microservice.inventario.dto.ProductDTO;
-import com.microservice.inventario.entities.Product;
-import com.microservice.inventario.persistence.ProductRepository;
+package microservice.service;
+import microservice.dto.ProductDTO;
+import microservice.entities.Product;
+import microservice.persistence.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

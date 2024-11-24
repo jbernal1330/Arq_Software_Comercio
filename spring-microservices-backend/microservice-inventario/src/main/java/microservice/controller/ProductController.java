@@ -1,11 +1,11 @@
 
-package com.microservice.inventario.controller;
+package microservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.microservice.inventario.dto.ProductDTO;
-import com.microservice.inventario.service.ProductService;
+import microservice.dto.ProductDTO;
+import microservice.service.ProductService;
 
 import java.util.List;
 
