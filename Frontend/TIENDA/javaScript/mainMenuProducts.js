@@ -64,6 +64,8 @@ function expandProduct(productId) {
     document.getElementById('modal-price').innerText = `$${product.price}`;
     document.getElementById('modal-description').innerText = product.description;
     document.getElementById('modal-img').src = product.image;
+    document.getElementById('modal-stock').innerText = `Stock disponible: ${product.stock}`;
+
 
     // Mostrar el modal
     document.getElementById('modal').classList.remove('hidden');
