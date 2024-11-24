@@ -22,6 +22,8 @@
         <module>microservice-config</module>
         <module>microservice-ordenes</module>
         <module>microserver-login</module>
+        <module>microservice-inventario</module>
+
     </modules>
 
     <properties>
