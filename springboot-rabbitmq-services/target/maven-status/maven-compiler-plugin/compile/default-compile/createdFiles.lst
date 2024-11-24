@@ -1,0 +1,9 @@
+net\javaguides\springboot\publisher\RabbitMQProducer.class
+net\javaguides\springboot\controller\MessageJsonController.class
+net\javaguides\springboot\config\RabbitMQConfig.class
+net\javaguides\springboot\consumer\RabbitMQConsumer.class
+net\javaguides\springboot\dto\User.class
+net\javaguides\springboot\SpringbootRabbitmqServicesApplication.class
+net\javaguides\springboot\controller\MessageController.class
+net\javaguides\springboot\publisher\RabbitMQJsonProducer.class
+net\javaguides\springboot\consumer\RabbitMQJsonConsumer.class
