@@ -1,20 +1,16 @@
-<<<<<<< HEAD
 server:
   port: 8090
-=======
->>>>>>> desarrollo
 spring:
   application:
     name:
       microservice-login
   config:
     import: optional:configserver:http//localhost:8888
-<<<<<<< HEAD
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/logindb
-    username: sofia
-    password: Lol1P0psy13*
+    username: root
+    password: Juanes1330*
   jpa:
     hibernate:
       ddl-auto: create
@@ -34,7 +30,5 @@ eureka:
 
 
 
-=======
->>>>>>> desarrollo
 
 
