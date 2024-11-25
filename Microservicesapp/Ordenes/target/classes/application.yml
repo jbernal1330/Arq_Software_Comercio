@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 server:
   port: 7070
 
@@ -20,11 +19,6 @@ spring:
     url: jdbc:mysql://localhost:3306/ordenesdb
     username: root
     password: Juanes1330*
-  jpa:
-    hibernate:
-      ddl-auto: create
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 eureka:
   instance:
@@ -46,12 +40,3 @@ rabbitmq:
     key: orden_routing_key
     json:
       key: orden_json_key
-=======
-spring:
-  application:
-    name:
-      microservice-ordenes
-  config:
-    import: optional:configserver:http//localhost:8888
-
->>>>>>> desarrollo

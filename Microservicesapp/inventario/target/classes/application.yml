@@ -3,12 +3,9 @@ server:
 spring:
   application:
     name:
-      microservice-inventario
-<<<<<<< HEAD
+      inventario
   config:
       import: optional:configserver:http//localhost:8888
-=======
->>>>>>> desarrollo
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/inventariodb
@@ -19,11 +16,6 @@ spring:
       ddl-auto: create
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
-<<<<<<< HEAD
-=======
-  config:
-    import: optional:configserver:http//localhost:8888
->>>>>>> desarrollo
 eureka:
   instance:
     hostname: localhost
@@ -37,8 +29,5 @@ eureka:
 
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> desarrollo

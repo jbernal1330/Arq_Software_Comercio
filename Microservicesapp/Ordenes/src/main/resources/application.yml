@@ -1,6 +1,5 @@
 server:
   port: 7070
-<<<<<<< HEAD
 
 spring:
   rabbitmq:
@@ -20,28 +19,7 @@ spring:
     url: jdbc:mysql://localhost:3306/ordenesdb
     username: root
     password: Juanes1330*
-=======
-spring:
-  application:
-    name:
-      microservice-ordenes
-  config:
-    import: optional:configserver:http//localhost:8888
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ordenesdb
-    username: sofia
-    password: Lo1P0psy13*
->>>>>>> desarrollo
-  jpa:
-    hibernate:
-      ddl-auto: create
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-<<<<<<< HEAD
 
-=======
->>>>>>> desarrollo
 eureka:
   instance:
     hostname: localhost
@@ -53,7 +31,6 @@ eureka:
       fetch-registry: true  # Permite al cliente obtener registros
       register-with-eureka: true  # Registra al cliente con Eureka
 
-<<<<<<< HEAD
 rabbitmq:
   queue:
     name: orden
@@ -63,9 +40,3 @@ rabbitmq:
     key: orden_routing_key
     json:
       key: orden_json_key
-=======
-
-
-
-
->>>>>>> desarrollo
