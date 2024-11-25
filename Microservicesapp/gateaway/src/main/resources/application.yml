@@ -3,9 +3,6 @@ server:
 spring:
   application:
     name: gateaway
-  config:
-      import: optional:configserver:http//localhost:8888
-
   cloud:
     gateway:
       discovery:
@@ -28,6 +25,13 @@ spring:
           uri: http://localhost:6060
           predicates:
             - Path=/api/pagos/**
+    config:
+      enabled: false
+
+
+
+
+
 
 
 

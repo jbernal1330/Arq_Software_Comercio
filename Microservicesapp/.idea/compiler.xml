@@ -3,15 +3,31 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Login" />
+        <module name="Eureka" />
+        <module name="gateaway" />
+        <module name="inventario" />
+        <module name="Ordenes" />
+        <module name="Pagos" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Eureka" target="17" />
-      <module name="gateaway" target="17" />
-      <module name="inventario" target="17" />
-      <module name="Login" target="17" />
-      <module name="Microservicesapp" target="1.5" />
-      <module name="Ordenes" target="17" />
-      <module name="Pagos" target="21" />
+      <module name="Config" target="21" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Config" options="-parameters" />
+      <module name="Eureka" options="-parameters" />
+      <module name="Login" options="-parameters" />
+      <module name="Ordenes" options="-parameters" />
+      <module name="Pagos" options="-parameters" />
+      <module name="gateaway" options="-parameters" />
+      <module name="inventario" options="-parameters" />
+    </option>
   </component>
 </project>

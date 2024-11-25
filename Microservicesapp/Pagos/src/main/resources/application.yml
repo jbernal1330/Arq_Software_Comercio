@@ -1,32 +1,21 @@
 server:
   port: 6090
-
 spring:
   application:
     name: microservice-pago
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/usuariosDB
-    username: root
-    password: Juanes1330*
+    url: jdbc:mysql://localhost:3306/pagosdb
+    username: sofia
+    password: Lol1P0psy13*
   jpa:
     hibernate:
       ddl-auto: update
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
-  config:
-    import: optional:configserver:http://localhost:8888
-  rabbitmq: # Configuración de RabbitMQ
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /  # El valor predeterminado es "/"
-    listener:
-      simple:
-        concurrency: 1   # Número de hilos concurrentes para el consumidor
-        max-concurrency: 10
-
+  cloud:
+    config:
+      enabled: false
 eureka:
   instance:
     hostname: localhost

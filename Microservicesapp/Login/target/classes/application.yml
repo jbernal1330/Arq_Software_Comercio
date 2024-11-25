@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 server:
   port: 8090
-=======
->>>>>>> desarrollo
 spring:
   application:
-    name:
-      microservice-login
-  config:
-    import: optional:configserver:http//localhost:8888
-<<<<<<< HEAD
+    name: microservice-login
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/logindb
@@ -20,11 +13,14 @@ spring:
       ddl-auto: create
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
+  cloud:
+    config:
+      enabled: false
 eureka:
   instance:
     hostname: localhost
-    lease-renewal-interval-in-seconds: 30  # Tiempo entre cada latido
-    lease-expiration-duration-in-seconds: 90  # Tiempo de expiración si el microservicio no responde
+    lease-renewal-interval-in-seconds: 40  # Tiempo entre cada latido
+    lease-expiration-duration-in-seconds: 60  # Tiempo de expiración si el microservicio no responde
   client:
     service-url:
       dafaultZone: http://localhost:8761/eureka
@@ -34,7 +30,8 @@ eureka:
 
 
 
-=======
->>>>>>> desarrollo
+
+
+
 
 
