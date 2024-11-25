@@ -8,19 +8,23 @@ spring:
     username: guest
     password: guest
   application:
-    name: microservice-ordenes
-  config:
-    import: optional:configserver:http//localhost:8888
+    name: Ordenes
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ordenesdb
-    username: sofia
-    password: Lo1P0psy13*
+    username: root
+    password: Juanes1330*
   jpa:
     hibernate:
       ddl-auto: create
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
 eureka:
   instance:
     hostname: localhost

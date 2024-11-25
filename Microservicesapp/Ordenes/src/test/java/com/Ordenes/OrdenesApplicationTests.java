@@ -1,4 +1,4 @@
-package com.example.ordenes;
+package com.Ordenes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

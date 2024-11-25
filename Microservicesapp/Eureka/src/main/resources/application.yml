@@ -3,6 +3,9 @@ server :
 spring:
   application:
     name: microservice-eureka
+  cloud:
+    config:
+      enabled: false
 eureka:
   server:
     eviction-interval-timer-in-ms: 30000  # Ajusta este valor para reducir el tiempo de chequeo (30 segundos)
@@ -15,4 +18,3 @@ eureka:
     fetch-registry: false
     server-url:
       deafultZone: http://localhost${server.port}/eureka/
-

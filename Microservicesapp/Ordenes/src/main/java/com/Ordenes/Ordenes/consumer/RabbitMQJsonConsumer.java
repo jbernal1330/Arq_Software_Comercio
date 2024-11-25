@@ -13,7 +13,7 @@ public class RabbitMQJsonConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQJsonConsumer.class);
     private final ObjectMapper objectMapper = new ObjectMapper(); // Crear un serializador local
 
-    @RabbitListener(queues = "${rabbitmq.queue.json.name}")
+    @RabbitListener(queues = "${rabbitmq.exchange.name}")
     public void Jsonconsumer(String jsonMessage) {
         try {
             // Deserializar el JSON manualmente a LoginDTO

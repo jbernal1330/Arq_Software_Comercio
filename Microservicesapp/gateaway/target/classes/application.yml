@@ -1,9 +1,35 @@
+server:
+  port: 8080
 spring:
   application:
-    name:
-      microservice-gateway
+    name: gateaway
   config:
-    import: optional:configserver:http//localhost:8888
+      import: optional:configserver:http//localhost:8888
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+      routes:
+        - id: login
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/login/**
+        - id: inventario
+          uri: http://localhost:9090
+          predicates:
+            - Path=/api/inventario/**
+        - id: ordenes
+          uri: http://localhost:7070
+          predicates:
+            - Path=/api/ordenes/**
+        - id: pagos
+          uri: http://localhost:6060
+          predicates:
+            - Path=/api/pagos/**
+
+
 
 
 

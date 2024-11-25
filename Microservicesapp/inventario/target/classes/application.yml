@@ -4,6 +4,8 @@ spring:
   application:
     name:
       microservice-inventario
+  config:
+      import: optional:configserver:http//localhost:8888
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/inventariodb
@@ -14,8 +16,6 @@ spring:
       ddl-auto: create
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
-  config:
-    import: optional:configserver:http//localhost:8888
 eureka:
   instance:
     hostname: localhost
@@ -26,6 +26,8 @@ eureka:
       dafaultZone: http://localhost:8761/eureka
       fetch-registry: true  # Permite al cliente obtener registros
       register-with-eureka: true  # Registra al cliente con Eureka
+
+
 
 
 
