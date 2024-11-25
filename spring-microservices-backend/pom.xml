@@ -23,7 +23,10 @@
         <module>microservice-ordenes</module>
         <module>microserver-login</module>
         <module>microservice-inventario</module>
+<<<<<<< HEAD
 
+=======
+>>>>>>> desarrollo
     </modules>
 
     <properties>
