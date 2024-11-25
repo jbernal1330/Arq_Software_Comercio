@@ -1,44 +1,71 @@
-let inventario = JSON.parse(localStorage.getItem('inventario')) || [];
-
+// URL base de la API
+const API_URL = 'http://localhost:3000/productos';
 
 // Función para agregar productos al inventario
-// Función para agregar productos al inventario
-export function agregarProducto(producto) {
+export async function agregarProducto(producto) {
     producto.description = producto.description || "Descripción no disponible"; // Valor por defecto si no se proporciona
-    inventario.push(producto);
-    localStorage.setItem('inventario', JSON.stringify(inventario));
-}
-
-
-export function modificarProducto(id, nuevosDatos) {
-    let inventario = obtenerInventario();
-
-    // Encuentra el producto en el inventario
-    let producto = inventario.find(p => p.id === id);
-
-    if (producto) {
-        // Actualiza los datos del producto
-        Object.assign(producto, nuevosDatos);
-
-        // Guarda el inventario actualizado en localStorage
-        localStorage.setItem('inventario', JSON.stringify(inventario));
-
-        // Verificar que los datos se guardaron correctamente
-        console.log('Producto modificado:', producto);
-    } else {
-        console.log('Producto no encontrado con ID:', id);
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(producto),
+        });
+        if (!response.ok) {
+            throw new Error('Error al agregar el producto');
+        }
+        console.log('Producto agregado con éxito');
+    } catch (error) {
+        console.error(error);
     }
 }
 
-
+// Función para modificar un producto por su ID
+export async function modificarProducto(id, nuevosDatos) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(nuevosDatos),
+        });
+        if (!response.ok) {
+            throw new Error('Error al modificar el producto');
+        }
+        console.log('Producto modificado con éxito');
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 // Función para eliminar un producto por su ID
-export function eliminarProducto(id) {
-    inventario = inventario.filter(p => p.id !== id);
-    localStorage.setItem('inventario', JSON.stringify(inventario)); // Guardar el inventario actualizado en localStorage
+export async function eliminarProducto(id) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'DELETE',
+        });
+        if (!response.ok) {
+            throw new Error('Error al eliminar el producto');
+        }
+        console.log('Producto eliminado con éxito');
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 // Función para obtener todos los productos
-export function obtenerInventario() {
-    return inventario;
+export async function obtenerInventario() {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+            throw new Error('Error al obtener los productos');
+        }
+        const productos = await response.json();
+        return productos;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
 }

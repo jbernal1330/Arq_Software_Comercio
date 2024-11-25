@@ -1,7 +1,7 @@
 import { modificarProducto, obtenerInventario } from './inventario.js';
 
-document.getElementById('productoForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Prevenir que se recargue la página
+document.getElementById('productoForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
   // Obtén el ID del producto que se está modificando
   const id = parseInt(document.getElementById('id').value);
@@ -12,26 +12,21 @@ document.getElementById('productoForm').addEventListener('submit', function (e) 
     stock: parseInt(document.getElementById('cantidad').value),
     price: parseFloat(document.getElementById('precio').value),
     category: document.getElementById('tipo').value,
-    description: document.getElementById('descripcion').value // Actualizar la descripción
+    description: document.getElementById('descripcion').value
   };
 
-  // Verifica los nuevos datos antes de modificarlos
-  console.log('Nuevos datos:', nuevosDatos);
-
   // Llama a la función para modificar el producto en el inventario
-  modificarProducto(id, nuevosDatos);
-
-  // Verifica si el producto ha sido modificado en localStorage
-  console.log('Inventario actualizado:', obtenerInventario());
+  await modificarProducto(id, nuevosDatos);
 
   // Muestra un mensaje de éxito
   alert("Producto modificado exitosamente.");
 
   // Refresca la tabla para mostrar los productos actualizados
-  renderResultados(obtenerInventario());
+  const productos = await obtenerInventario();
+  renderResultados(productos);
 });
 
-function renderResultados(productos) {
+async function renderResultados(productos) {
   const tbody = document.querySelector('.tabla-productos tbody');
   tbody.innerHTML = ''; // Limpia la tabla antes de volver a llenarla
 
@@ -42,10 +37,10 @@ function renderResultados(productos) {
       const row = `
         <tr>
           <td>${product.name}</td>
-          <td>${product.description ? product.description : 'Descripción no disponible'}</td> <!-- Mostrar descripción -->
+          <td>${product.description || 'Descripción no disponible'}</td>
           <td>${product.stock}</td>
           <td>${product.price}</td>
-          <td>${product.category}</td>
+          <td>${product.category || ''}</td>
           <td>${product.id}</td>
           <td><button class="btn-visualizar" data-id="${product.id}">Visualizar</button></td>
         </tr>
@@ -53,23 +48,31 @@ function renderResultados(productos) {
       tbody.innerHTML += row;
     });
 
-    // Asegúrate de que el botón "Visualizar" funcione correctamente
+    // Asignar evento al botón "Visualizar"
     document.querySelectorAll('.btn-visualizar').forEach(btn => {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', async function () {
         const id = parseInt(this.getAttribute('data-id'));
-        const producto = obtenerInventario().find(p => p.id === id);
+        const productos = await obtenerInventario();
+        const producto = productos.find(p => p.id === id);
 
-        // Rellenar los campos del formulario con los detalles del producto
-        document.getElementById('nombre').value = producto.name;
-        document.getElementById('descripcion').value = producto.description; // Mostrar descripción
-        document.getElementById('cantidad').value = producto.stock;
-        document.getElementById('precio').value = producto.price;
-        document.getElementById('tipo').value = producto.category;
-        document.getElementById('id').value = producto.id;
+        if (producto) {
+          // Rellenar los campos del formulario con los detalles del producto
+          document.getElementById('nombre').value = producto.name;
+          document.getElementById('descripcion').value = producto.description;
+          document.getElementById('cantidad').value = producto.stock;
+          document.getElementById('precio').value = producto.price;
+          document.getElementById('tipo').value = producto.category || '';
+          document.getElementById('id').value = producto.id;
+        }
       });
     });
   }
 }
 
 // Llamar a la función para mostrar todos los productos al cargar la página
-renderResultados(obtenerInventario());
+async function init() {
+  const productos = await obtenerInventario();
+  renderResultados(productos);
+}
+
+init();

@@ -1,38 +1,34 @@
 import { agregarProducto, obtenerInventario } from './inventario.js';
 
-// Cargar inventario desde localStorage al cargar la página
-function cargarInventarioDesdeLocalStorage() {
-  const inventarioGuardado = localStorage.getItem('inventario');
-  if (inventarioGuardado) {
-    return JSON.parse(inventarioGuardado); // Convertir de JSON a objeto JavaScript
-  }
-  return obtenerInventario(); // Si no hay nada en localStorage, usar el inventario original
+// Cargar productos desde el backend al iniciar la página
+async function cargarInventarioDesdeBackend() {
+  const inventario = await obtenerInventario();
+  console.log('Inventario cargado:', inventario);
 }
 
-// Guardar inventario en localStorage
-function guardarInventarioEnLocalStorage() {
-  const inventario = obtenerInventario();
-  localStorage.setItem('inventario', JSON.stringify(inventario)); // Convertir el inventario a JSON y guardarlo
-  console.log(localStorage.getItem('inventario'));
-
-}
-
-document.getElementById('productoForm').addEventListener('submit', function (e) {
+// Guardar producto en el backend
+document.getElementById('productoForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   let nuevoProducto = {
-    id: Date.now(), // Generar un ID único
     name: document.getElementById('nombre').value,
-    description: document.getElementById('descripcion').value, // Capturar descripción
+    description: document.getElementById('descripcion').value,
     price: parseFloat(document.getElementById('precio').value),
+    stock: parseInt(document.getElementById('stock').value),
     category: document.getElementById('categoria').value,
-    stock: parseInt(document.getElementById('stock').value),  
-    image: document.getElementById('imagen').value
+    image: document.getElementById('imagen').value // Capturando la URL de la imagen
   };
 
-  agregarProducto(nuevoProducto);
-  guardarInventarioEnLocalStorage();
+  // Llamar a la API para agregar el producto
+  await agregarProducto(nuevoProducto);
   alert("Producto agregado exitosamente.");
+
+  // Limpiar el formulario
   document.getElementById('productoForm').reset();
+
+  // Actualizar el inventario en la página
+  cargarInventarioDesdeBackend();
 });
 
+// Cargar inventario inicial
+cargarInventarioDesdeBackend();

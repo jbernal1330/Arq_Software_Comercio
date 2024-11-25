@@ -1,4 +1,3 @@
-
 package microservice.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
