@@ -7,99 +7,97 @@
     <title>E-lovers</title>
     <link rel="stylesheet" href="../css/mainMenuStyle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- jsPDF library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 </head>
 
 <body>
-    <div id="success-message" class="hidden">Exitosamente agregado al carrito</div>
+<div id="success-message" class="hidden">Exitosamente agregado al carrito</div>
 
-    <!-- Barra superior -->
-    <header class="header">
-        E-lovers
-        <!-- Ícono del carrito en la esquina derecha -->
-        <span class="material-icons cart-icon" onclick="toggleCart()">shopping_cart</span>
+<!-- Barra superior -->
+<header class="header">
+    E-lovers
+    <!-- Ícono del carrito en la esquina derecha -->
+    <span class="material-icons cart-icon" onclick="toggleCart()">shopping_cart</span>
+</header>
 
-    </header>
-    <div id="payment-form" class="hidden">
-        <h2>Complete Your Payment</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="card">Card Number:</label>
-            <input type="text" id="card" name="card" required><br><br>
-            <button type="button" onclick="processPayment()">Pay</button>
-            <button type="button" onclick="closePaymentForm()">Cancel</button> <!-- Close button -->
-        </form>
+<!-- Barra de categorías -->
+<nav class="navbar">
+    <ul>
+        <li><button id="refresh-btn"><span class="material-icons">refresh</span></button></li>
+        <li><button onclick="filterProducts('Celular')">Celulares</button></li>
+        <li><button onclick="filterProducts('Televisor')">Televisores</button></li>
+        <li><button onclick="filterProducts('Lavadora')">Lavadoras</button></li>
+        <li><button onclick="filterProducts('Accesorio')">Accesorios</button></li>
+        <li><button onclick="filterProducts('Electrodomésticos')">Electrodomésticos</button></li>
+    </ul>
+</nav>
+
+<!-- Cuadrícula de productos -->
+<main class="container">
+    <div class="grid" id="product-grid">
+        <!-- Aquí se generarán los productos dinámicamente -->
     </div>
+</main>
 
-    <!-- Barra de categorías -->
-    <nav class="navbar">
-        <ul>
-            <li><button id="refresh-btn"><span class="material-icons">refresh</span></button></li>
-            <li><button onclick="filterProducts('Celular')">Celulares</button></li>
-            <li><button onclick="filterProducts('Televisor')">Televisores</button></li>
-            <li><button onclick="filterProducts('Lavadora')">Lavadoras</button></li>
-            <li><button onclick="filterProducts('Accesorio')">Accesorios</button></li>
-            <li><button onclick="filterProducts('electrodomésticos')">Electrodomésticos</button></li>
-        </ul>
-    </nav>
-
-    <!-- Cuadrícula de productos -->
-    <main class="container">
-        <div class="grid" id="product-grid">
-            <!-- Aquí se generarán los productos dinámicamente -->
-        </div>
-    </main>
-
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h2>Carrito</h2>
-            <span class="close-cart" onclick="toggleCart()">✕</span>
-        </div>
-        <div id="cart-items" class="cart-items">
-            <!-- Aquí se agregarán los productos del carrito -->
-
-        </div>
-        <div class="cart-total-container">
-            <p id="cart-total-price">Total: $0.00</p>
-        </div>
-        <button id="checkout-button">Proceder al pago</button>
+<!-- Barra lateral del carrito -->
+<div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Carrito</h2>
+        <span class="close-cart" onclick="toggleCart()">✕</span>
     </div>
+    <div id="cart-items" class="cart-items">
+        <!-- Aquí se agregarán los productos del carrito -->
+    </div>
+    <div class="cart-total-container">
+        <p id="cart-total-price">Total: $0.00</p>
+    </div>
+    <button id="checkout-button">Proceder al pago</button>
+</div>
 
+<!-- Modal para producto expandido -->
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <!-- Botón de cierre -->
+        <span class="close-modal" id="close-modal">&times;</span>
 
+        <!-- Imagen del producto a la izquierda -->
+        <img id="modal-img" src="" alt="Imagen del producto">
 
-
-
-
-    <!-- Modal para producto expandido -->
-    <div id="modal" class="modal hidden">
-        <div class="modal-content">
-            <!-- Imagen del producto a la izquierda -->
-            <img id="modal-img" src="" alt="Imagen del producto">
-
-            <!-- Texto y botón a la derecha -->
-            <div class="modal-text">
-                <h2 id="modal-name">Nombre del producto</h2>
-                <p id="modal-price">Precio</p>
-                <p class="modal-description" id="modal-description">Descripción del producto</p>
-                <!-- Nuevo elemento para mostrar el stock -->
-                <p id="modal-stock">Stock disponible: </p>
-                <div class="quantity-control">
-                    <button id="decrease-quantity">-</button>
-                    <span id="quantity-number">1</span>
-                    <button id="increase-quantity">+</button>
-                </div>
-                <button id="add-to-cart">Añadir al carrito</button>
+        <!-- Texto y botón a la derecha -->
+        <div class="modal-text">
+            <h2 id="modal-name">Nombre del producto</h2>
+            <p id="modal-price">Precio</p>
+            <p class="modal-description" id="modal-description">Descripción del producto</p>
+            <!-- Nuevo elemento para mostrar el stock -->
+            <p id="modal-stock">Stock disponible: </p>
+            <div class="quantity-control">
+                <button id="decrease-quantity">-</button>
+                <span id="quantity-number">1</span>
+                <button id="increase-quantity">+</button>
             </div>
+            <button id="add-to-cart">Añadir al carrito</button>
         </div>
     </div>
+</div>
 
+<!-- Formulario de pago -->
+<div id="payment-form" class="hidden">
+    <h2>Complete su pago</h2>
+    <form>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="card">Número de tarjeta:</label>
+        <input type="text" id="card" name="card" required><br><br>
+        <button type="button" onclick="processPayment()">Pagar</button>
+        <button type="button" onclick="closePaymentForm()">Cancelar</button>
+    </form>
+</div>
 
-    <script src="../javaScript/mainMenuProducts.js" type="module"></script>
-
+<!-- Archivo JavaScript -->
+<script src="../javaScript/mainMenuProducts.js" type="module"></script>
 </body>
 
 </html>

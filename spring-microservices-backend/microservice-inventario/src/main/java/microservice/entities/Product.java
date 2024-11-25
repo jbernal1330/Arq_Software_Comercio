@@ -1,4 +1,3 @@
-
 package microservice.entities;
 
 import jakarta.persistence.*;
@@ -16,8 +15,10 @@ public class Product {
     private int stock;
     private double price;
     private String category;
+    private String image; // Campo agregado
 
-    // Getters and Setters
+    // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -26,6 +27,7 @@ public class Product {
         this.id = id;
     }
 
+    // Getter y Setter para name
     public String getName() {
         return name;
     }
@@ -34,6 +36,7 @@ public class Product {
         this.name = name;
     }
 
+    // Getter y Setter para description
     public String getDescription() {
         return description;
     }
@@ -42,6 +45,7 @@ public class Product {
         this.description = description;
     }
 
+    // Getter y Setter para stock
     public int getStock() {
         return stock;
     }
@@ -50,6 +54,7 @@ public class Product {
         this.stock = stock;
     }
 
+    // Getter y Setter para price
     public double getPrice() {
         return price;
     }
@@ -58,11 +63,21 @@ public class Product {
         this.price = price;
     }
 
+    // Getter y Setter para category
     public String getCategory() {
         return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    // Getter y Setter para image
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

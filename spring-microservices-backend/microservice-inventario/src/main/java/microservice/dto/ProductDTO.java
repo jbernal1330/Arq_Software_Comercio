@@ -1,4 +1,3 @@
-
 package microservice.dto;
 
 public class ProductDTO {
@@ -9,8 +8,10 @@ public class ProductDTO {
     private int stock;
     private double price;
     private String category;
+    private String image; // Campo agregado
 
-    // Getters and Setters
+    // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -19,6 +20,7 @@ public class ProductDTO {
         this.id = id;
     }
 
+    // Getter y Setter para name
     public String getName() {
         return name;
     }
@@ -27,6 +29,7 @@ public class ProductDTO {
         this.name = name;
     }
 
+    // Getter y Setter para description
     public String getDescription() {
         return description;
     }
@@ -35,6 +38,7 @@ public class ProductDTO {
         this.description = description;
     }
 
+    // Getter y Setter para stock
     public int getStock() {
         return stock;
     }
@@ -43,6 +47,7 @@ public class ProductDTO {
         this.stock = stock;
     }
 
+    // Getter y Setter para price
     public double getPrice() {
         return price;
     }
@@ -51,11 +56,21 @@ public class ProductDTO {
         this.price = price;
     }
 
+    // Getter y Setter para category
     public String getCategory() {
         return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    // Getter y Setter para image
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
