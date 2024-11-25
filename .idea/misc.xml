@@ -8,6 +8,11 @@
         <option value="$PROJECT_DIR$/spring-microservices-backend/microservice-inventario/microservice-inventario/pom.xml" />
         <option value="$PROJECT_DIR$/spring-microservices-backend/microservice-inventario/pom.xml" />
         <option value="$PROJECT_DIR$/Microservicesapp/inventario/pom.xml" />
+        <option value="$PROJECT_DIR$/Microservicesapp/Eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/Microservicesapp/gateaway/pom.xml" />
+        <option value="$PROJECT_DIR$/Microservicesapp/Login/pom.xml" />
+        <option value="$PROJECT_DIR$/Microservicesapp/Ordenes/pom.xml" />
+        <option value="$PROJECT_DIR$/Microservicesapp/Pagos/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -16,7 +21,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
