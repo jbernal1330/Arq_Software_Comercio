@@ -1,4 +1,4 @@
-package com.microservice.pago.entities;
+package com.Pagos.Pagos.entities;
 import jakarta.persistence.*;
 import java.util.Date;
 

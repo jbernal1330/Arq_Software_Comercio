@@ -2,11 +2,16 @@ server:
   port: 6090
 
 spring:
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
   application:
-    name: microservice-pago
+    name: pagos
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/usuariosDB
+    url: jdbc:mysql://localhost:3306/pagosdb
     username: root
     password: Juanes1330*
   jpa:
@@ -14,8 +19,6 @@ spring:
       ddl-auto: update
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
-  config:
-    import: optional:configserver:http://localhost:8888
   rabbitmq: # Configuración de RabbitMQ
     host: localhost
     port: 5672

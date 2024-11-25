@@ -1,4 +1,4 @@
-package com.microserver.pago.config;
+package com.Pagos.Pagos.config;
 
 import com.rabbitmq.client.ConnectionFactory;
 import org.springframework.amqp.core.Binding;
@@ -27,8 +27,9 @@ public class RabbitMQConfig {
         return BindingBuilder.bind(pagoQueue).to(pagoExchange).with("pago.key");
     }
 
+    /*
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
         return new RabbitTemplate(connectionFactory);
-    }
+    }*/
 }

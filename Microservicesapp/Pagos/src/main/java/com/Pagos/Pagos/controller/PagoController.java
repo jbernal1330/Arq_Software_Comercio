@@ -1,7 +1,7 @@
-package com.microservice.pago.controller;
+package com.Pagos.Pagos.controller;
 
-import com.microservice.pago.entities.Pago;
-import com.microservice.pago.rabbitmq.PagoProducer;
+import com.Pagos.Pagos.entities.Pago;
+import com.Pagos.Pagos.rabbitmq.PagoProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package com.microservice.pago.rabbitmq;
+package com.Pagos.Pagos.rabbitmq;
 
-import com.microservice.pago.entities.Pago;
+import com.Pagos.Pagos.entities.Pago;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 

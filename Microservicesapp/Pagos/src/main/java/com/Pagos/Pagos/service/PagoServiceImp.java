@@ -1,7 +1,7 @@
-package com.microservice.pago.service;
+package com.Pagos.Pagos.service;
 
-import com.microservice.pago.entities.Pago;
-import com.microservice.pago.persistence.PagoRepository;
+import com.Pagos.Pagos.entities.Pago;
+import com.Pagos.Pagos.persistence.PagoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
