@@ -7,16 +7,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
-        <module name="microserver-login" />
         <module name="microservice-inventario" />
-        <module name="microservice-eureka" />
         <module name="microservice-config" />
         <module name="microservice-ordenes" />
+        <module name="microserver-login" />
+        <module name="microservice-eureka" />
+        <module name="inventario" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpringMicroservices" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="inventario" options="-parameters" />
       <module name="microserver-login" options="-parameters" />
       <module name="microservice-config" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />
