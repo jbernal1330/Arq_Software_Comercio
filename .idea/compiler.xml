@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -16,6 +17,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Eureka" target="17" />
+      <module name="gateaway" target="17" />
+      <module name="Login" target="17" />
+      <module name="Microservicesapp" target="1.5" />
+      <module name="Ordenes" target="17" />
+      <module name="Pagos" target="17" />
       <module name="SpringMicroservices" target="17" />
     </bytecodeTargetLevel>
   </component>
