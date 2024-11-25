@@ -1,0 +1,23 @@
+server :
+  port: 8761
+spring:
+  application:
+    name: microservice-eureka
+<<<<<<< HEAD
+  cloud:
+    config:
+      enabled: false
+=======
+>>>>>>> desarrollo
+eureka:
+  server:
+    eviction-interval-timer-in-ms: 30000  # Ajusta este valor para reducir el tiempo de chequeo (30 segundos)
+    instance:
+      hostname: localhost
+      lease-expiration-duration-in-seconds: 90  # Tiempo para que una instancia expire si no hay renovaciones (90 segundos)
+      lease-renewal-interval-in-seconds: 30  # Tiempo entre cada renovación de las instancias (30 segundos)
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    server-url:
+      deafultZone: http://localhost${server.port}/eureka/

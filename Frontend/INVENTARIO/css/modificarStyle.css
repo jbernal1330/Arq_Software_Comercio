@@ -1,0 +1,135 @@
+body {
+    font-family: sans-serif;
+    background-color: #fff; /* Fondo blanco */
+    color: #222;  /* Color de texto principal negro */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #000; /* Franja superior negra */
+    color: #fff; /* Texto blanco en el encabezado */
+    padding: 5px;
+    text-align: center;
+  }
+  
+  main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222; /* Título en negro */
+  }
+  
+  /* Aplica grid al formulario */
+  #productoForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Crea dos columnas con igual ancho */
+    gap: 20px; /* Espacio entre las columnas */
+  }
+  
+  .form-group {
+    margin-bottom: 15px; /* Espacio entre las filas */
+  }
+  
+  .card { 
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Alineación del texto a la izquierda */
+    border: none; 
+    transition: transform 0.2s ease;
+    display: flex; 
+    flex-direction: column; 
+    color: #222; /* Color de texto negro dentro de las tarjetas */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); 
+  }
+  
+  .card input, 
+  .card textarea,
+  .card select { 
+    width: calc(100% - 20px); 
+    padding: 10px;
+    margin-top: 10px; 
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .card label {
+    text-align: left; 
+    margin-bottom: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #000000; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px; 
+    transition: transform 0.2s ease; 
+    display: flex; /* Para alinear el icono y el texto */
+    align-items: center; /* Para alinear el icono y el texto */
+    grid-column: span 2; /* El botón ocupa las dos columnas */
+  }
+  
+  button[type="submit"]:hover {
+    transform: scale(1.05); 
+  }
+  
+  button[type="submit"] i {
+    margin-right: 5px; 
+  }
+  
+  /* Estilos para el botón de volver */
+  a.card {
+    margin-top: 20px; /* Espacio superior */
+    text-decoration: none; /* Quita la decoración del enlace */
+    color: #222; /* Color del texto del enlace */
+    grid-column: span 2; /* El botón ocupa las dos columnas */
+  }
+  
+  a.card:hover {
+    color: #28a745; /* Cambia el color del texto al pasar el mouse */
+  }
+  
+  /* Estilos para la tabla de productos */
+  /* Estilos para la tabla de productos */
+.tabla-productos {
+  width: 100%;
+  max-width: 800px; /* Ajusta el ancho máximo de la tabla */
+  margin-bottom: 20px;
+  border-collapse: collapse; /* Colapsar los bordes de la tabla */
+}
+
+.tabla-productos th,
+.tabla-productos td {
+  border: 1px solid #ddd; /* Agregar bordes a las celdas */
+  padding: 8px;
+  text-align: left;
+}
+  
+  /* Estilos para el buscador */
+  #buscarProducto {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

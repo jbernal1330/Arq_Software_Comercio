@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Iniciar sesión en TuTienda</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="icon-container">
+        <span class="material-icons icon">shopping_bag</span>
+      </div>
+      <h2>Iniciar sesión en TuTienda</h2>
+      <form class="form" id="login-form">
+        <div class="input-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="Correo" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" required />
+        </div>
+        <button type="submit" class="btn">Iniciar sesión</button>
+      </form>
+      <div class="forgot-password">
+        <a href="#">¿Olvidaste tu contraseña?</a>
+      </div>
+    </div>
+    <div class="info-bar">
+      <div class="info-item">
+        <span class="material-icons info-icon">credit_card</span>
+        Pago seguro
+      </div>
+      <div class="info-item">
+        <span class="material-icons info-icon">local_shipping</span>
+        Envío rápido
+      </div>
+    </div>
+    <div class="signup">
+      <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Agrega un listener para el evento de envío del formulario
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita el comportamiento por defecto del formulario
+      // Redirige al usuario al archivo mainMenu.html
+      window.location.href = '../../INVENTARIO/html/gestionInventario.html';
+    });
+  </script>
+</body>
+
+</html>
