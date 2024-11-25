@@ -6,16 +6,27 @@ spring:
       microservice-pagos
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/pagosdb
     username: sofia
     password: Lol1P0psy13*
   config:
     import: optional:configserver:http//localhost:8888
+=======
+    url: jdbc:mysql://localhost:3306/pagosDB
+    username: root
+    password: 12345
+>>>>>>> desarrollo
   jpa:
     hibernate:
       ddl-auto: create
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
+<<<<<<< HEAD
+=======
+  config:
+    import: optional:configserver:http//localhost:8888
+>>>>>>> desarrollo
 eureka:
   instance:
     hostname: localhost
@@ -27,5 +38,8 @@ eureka:
       fetch-registry: true  # Permite al cliente obtener registros
       register-with-eureka: true  # Registra al cliente con Eureka
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> desarrollo
