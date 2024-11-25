@@ -14,21 +14,18 @@
         <module name="microserver-login" />
         <module name="microservice-eureka" />
         <module name="inventario" />
+        <module name="Pagos" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Eureka" target="17" />
-      <module name="gateaway" target="17" />
-      <module name="Login" target="17" />
       <module name="Microservicesapp" target="1.5" />
-      <module name="Ordenes" target="17" />
-      <module name="Pagos" target="17" />
       <module name="SpringMicroservices" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="inventario" options="-parameters" />
+      <module name="Pagos" options="-parameters" />
+      <module name="inventario" options="" />
       <module name="microserver-login" options="-parameters" />
       <module name="microservice-config" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />
