@@ -1,31 +1,35 @@
 server:
-  port: 6060
+  port: 6090
+
 spring:
   application:
-    name:
-      microservice-pagos
+    name: microservice-pago
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pagosdb
-    username: sofia
-    password: Lol1P0psy13*
-  config:
-    import: optional:configserver:http//localhost:8888
+    url: jdbc:mysql://localhost:3306/usuariosDB
+    username: root
+    password: Juanes1330*
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
+  config:
+    import: optional:configserver:http://localhost:8888
+  rabbitmq: # Configuración de RabbitMQ
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /  # El valor predeterminado es "/"
+    listener:
+      simple:
+        concurrency: 1   # Número de hilos concurrentes para el consumidor
+        max-concurrency: 10
+
 eureka:
   instance:
     hostname: localhost
-    lease-renewal-interval-in-seconds: 30  # Tiempo entre cada latido
-    lease-expiration-duration-in-seconds: 90  # Tiempo de expiración si el microservicio no responde
   client:
     service-url:
-      dafaultZone: http://localhost:8761/eureka
-      fetch-registry: true  # Permite al cliente obtener registros
-      register-with-eureka: true  # Registra al cliente con Eureka
-
-
-
+      defaultZone: http://localhost:8761/eureka
