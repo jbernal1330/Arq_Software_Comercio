@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 server:
   port: 8080
 spring:
@@ -21,24 +20,21 @@ spring:
           uri: http://localhost:9090
           predicates:
             - Path=/api/inventario/**
+          filters:
+            - RewritePath=/api/inventario/(?<segment>.*), /api/products/$\{segment}
         - id: ordenes
           uri: http://localhost:7070
           predicates:
             - Path=/api/ordenes/**
+          filters:
+            - RewritePath=/api/ordenes/(?<segment>.*), /api/orden/$\{segment}
         - id: pagos
-          uri: http://localhost:6060
+          uri: http://localhost:6090
           predicates:
             - Path=/api/pagos/**
+          filters:
+            - RewritePath=/api/pagos/(?<segment>.*), /api/pago/$\{segment}
 
-
-=======
-spring:
-  application:
-    name:
-      microservice-gateway
-  config:
-    import: optional:configserver:http//localhost:8888
->>>>>>> desarrollo
 
 
 

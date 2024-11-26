@@ -4,8 +4,11 @@ spring:
   application:
     name:
       login
-  config:
-    import: optional:configserver:http//localhost:8888
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/logindb
@@ -13,7 +16,7 @@ spring:
     password: Juanes1330*
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
 eureka:
