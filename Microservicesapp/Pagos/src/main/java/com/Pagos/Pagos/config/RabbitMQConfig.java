@@ -6,30 +6,33 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+    @Value("${rabbitmq.queue.name}")
+    private String queueName;
+
+    @Value("${rabbitmq.exchange.name}")
+    private String exchangeName;
+
+    @Value("${rabbitmq.routing.key}")
+    private String routingKey;
 
     @Bean
-    public DirectExchange pagoExchange() {
-        return new DirectExchange("pago.exchange");
+    public Queue queue() {
+        return new Queue(queueName);
     }
 
     @Bean
-    public Queue pagoQueue() {
-        return new Queue("pago.queue", true); // true: persistente
+    public DirectExchange exchange() {
+        return new DirectExchange(exchangeName);
     }
 
     @Bean
-    public Binding binding(Queue pagoQueue, DirectExchange pagoExchange) {
-        return BindingBuilder.bind(pagoQueue).to(pagoExchange).with("pago.key");
+    public Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
     }
-
-    /*
-    @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-        return new RabbitTemplate(connectionFactory);
-    }*/
 }

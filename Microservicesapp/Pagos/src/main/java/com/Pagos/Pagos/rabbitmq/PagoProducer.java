@@ -19,4 +19,3 @@ public class PagoProducer {
         System.out.println("Mensaje enviado: " + pago);
     }
 }
-

@@ -7,6 +7,11 @@ spring:
       enabled: false
       import-check:
         enabled: false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   application:
     name: inventario
   datasource:
@@ -27,6 +32,14 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+rabbitmq:
+  exchange:
+    name: orden_json
+  queue:
+    inventario: inventario_orden
+  routing:
+    inventario:
+      key: inventario_orden_key
 
 
 

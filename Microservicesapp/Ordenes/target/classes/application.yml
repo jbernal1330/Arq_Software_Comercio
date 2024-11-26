@@ -1,25 +1,26 @@
 server:
   port: 7070
-
 spring:
+  application:
+    name: ordenes
   rabbitmq:
     host: localhost
     port: 5672
     username: guest
     password: guest
-  application:
-    name: Ordenes
   cloud:
     config:
       enabled: false
-      import-check:
-        enabled: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ordenesdb
     username: root
     password: Juanes1330*
-
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 eureka:
   instance:
     hostname: localhost
@@ -30,13 +31,15 @@ eureka:
       defaultZone: http://localhost:8761/eureka
       fetch-registry: true  # Permite al cliente obtener registros
       register-with-eureka: true  # Registra al cliente con Eureka
-
 rabbitmq:
-  queue:
-    name: orden
   exchange:
     name: orden_json
+    pagos: orden_json
+  queue:
+    pagos: pagos_orden
+    inventario: inventario_orden
   routing:
-    key: orden_routing_key
-    json:
-      key: orden_json_key
+    pagos:
+      key: pagosRoutingKey
+    inventario:
+      key: inventario_orden_key

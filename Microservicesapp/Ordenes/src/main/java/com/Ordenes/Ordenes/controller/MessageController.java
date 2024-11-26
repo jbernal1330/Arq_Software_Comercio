@@ -1,40 +1,50 @@
 package com.Ordenes.Ordenes.controller;
 
-import com.Ordenes.Ordenes.dto.ordenDTO;
 
-import com.Ordenes.Ordenes.publisher.RabbitMQProducer;
+import com.Ordenes.Ordenes.publisher.RabbitMQProducerPagos;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
 public class MessageController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
 
-    private final RabbitMQProducer producer;
+    private final RabbitMQProducerPagos rabbitMQProducer;
+    private final List<String> mensajesRecibidos = new ArrayList<>();
 
-    public MessageController(RabbitMQProducer producer) {
-        this.producer = producer;
+
+    public MessageController(RabbitMQProducerPagos rabbitMQProducer) {
+        this.rabbitMQProducer = rabbitMQProducer;
     }
 
-    @GetMapping("/publish")
-    public ResponseEntity<String> sendMessage(@RequestParam("message") String message) {
-        if (message == null || message.isBlank()) {
-            return ResponseEntity.badRequest().body("Message cannot be empty");
-        }
-        producer.sendMessage(message);
-        return ResponseEntity.ok("Message sent to RabbitMQ ... ");
+    // Endpoint para manejar las órdenes y enviar un mensaje a Pagos
+    @PostMapping
+    public ResponseEntity<String> crearOrden(@RequestBody String ordenDetalle) {
+        LOGGER.info("Nueva orden creada: {}", ordenDetalle);
+
+        // Enviar mensaje al microservicio de Pagos
+        rabbitMQProducer.enviarMensajePagos("Nueva orden procesada: " + ordenDetalle);
+
+        return ResponseEntity.ok("Orden creada y notificación enviada a Pagos: " + ordenDetalle);
     }
 
-    @PostMapping("/publish/orden")
-    public ResponseEntity<String> sendOrden(@RequestBody ordenDTO ordenDTO) {
-        try {
-            // Añade la fecha y hora actual al DTO
-            producer.sendOrdenDTO(ordenDTO);
+    // Método que será llamado por RabbitMQConsumer cuando llegue un mensaje
+    public void agregarMensaje(String mensaje) {
+        LOGGER.info("Agregando mensaje recibido al historial: {}", mensaje);
+        mensajesRecibidos.add(mensaje);
+    }
 
-            return ResponseEntity.ok("Order data sent to RabbitMQ ... ");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(500).body("Error al procesar la orden");
-        }
+    // Endpoint para verificar los mensajes recibidos de Inventario
+    @GetMapping("/mensajes")
+    public ResponseEntity<List<String>> obtenerMensajes() {
+        LOGGER.info("Producto recibido");
+        return ResponseEntity.ok(mensajesRecibidos);
     }
 }
+
