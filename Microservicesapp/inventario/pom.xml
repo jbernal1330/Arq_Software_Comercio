@@ -8,9 +8,9 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.inventario</groupId>
-	<artifactId>inventario </artifactId>
+	<artifactId>inventario</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>inventario </name>
+	<name>inventario</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

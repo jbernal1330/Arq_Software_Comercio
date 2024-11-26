@@ -10,11 +10,22 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "desc", nullable = false)
     private String description;
+
+    @Column(name = "stock", nullable = false)
     private int stock;
+
+    @Column(name = "price", nullable = false)
     private double price;
+
+    @Column(name = "category", nullable = false)
     private String category;
+
+    @Column(name = "image", nullable = false)
     private String image; // Campo agregado
 
     // Getters y Setters
