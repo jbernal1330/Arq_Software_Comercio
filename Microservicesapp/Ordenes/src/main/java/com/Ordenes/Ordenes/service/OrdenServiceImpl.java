@@ -15,12 +15,12 @@ public class OrdenServiceImpl implements OrdenService {
 
     @Override
     public List<Orden> findAll() {
-        return List.of();
+        return (List<Orden>) ordenRepository.findAll();
     }
 
     @Override
     public Orden findById(Long id) {
-        return null;
+        return ordenRepository.findById(id).orElse(null);
     }
 
     @Override

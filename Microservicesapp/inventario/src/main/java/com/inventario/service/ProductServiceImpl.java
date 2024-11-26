@@ -42,4 +42,9 @@ public class ProductServiceImpl implements ProductService {
         productDTO.setId(savedProduct.getId());
         return productDTO;
     }
+
+    @Override
+    public ProductDTO getProductById(Long id) {
+        return productRepository.getProductById(id);
+    }
 }

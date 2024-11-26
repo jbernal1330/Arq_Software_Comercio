@@ -10,6 +10,6 @@ import java.util.List;
 @FeignClient(name = "msvc-ordenes", url = "localhost:${server.port}/api/client")
 public interface ordenClient {
 
-    @GetMapping("/search-by-client/{IdClient]")
+    @GetMapping("/search-by-client/{IdClient}")
     List<ordenDTO> findAllOrderByClient(@PathVariable Long IdClient);
 }

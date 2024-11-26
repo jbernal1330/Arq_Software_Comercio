@@ -13,4 +13,7 @@ public interface ordenRepository extends CrudRepository<Orden, Long> {
 
     @Query("SELECT s FROM Orden s WHERE s.id= :idOrden")
     List<Orden> findAllOrdenes(Long idOrden);
+
+    List<Orden> findByClienteId(Long clienteId);
+
 }

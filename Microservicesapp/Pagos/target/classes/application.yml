@@ -19,16 +19,6 @@ spring:
       ddl-auto: update
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
-  rabbitmq: # Configuración de RabbitMQ
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /  # El valor predeterminado es "/"
-    listener:
-      simple:
-        concurrency: 1   # Número de hilos concurrentes para el consumidor
-        max-concurrency: 10
 
 eureka:
   instance:

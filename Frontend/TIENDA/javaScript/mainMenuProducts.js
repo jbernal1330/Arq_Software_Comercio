@@ -1,11 +1,72 @@
-import { obtenerInventario } from '../../INVENTARIO/javaScript/inventario.js';
-
 (async function() {
   let cart = [];
   let totalPrice = 0;
 
-  const products = await obtenerInventario();
+  const API_GATEWAY_URL = 'http://localhost:8080'; // URL base del gateway
 
+  // Función para obtener el inventario desde el gateway
+  async function obtenerInventario() {
+    try {
+      const response = await fetch(`${API_GATEWAY_URL}/api/inventario`);
+      if (!response.ok) {
+        throw new Error('Error al obtener los productos');
+      }
+      const productos = await response.json();
+      return productos;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  async function consultarProducto(productId) {
+    try {
+      const response = await fetch(`${API_GATEWAY_URL}/api/inventario/${productId}`);
+      if (!response.ok) {
+        throw new Error('Error al consultar el producto');
+      }
+      const product = await response.json();
+      console.log('Detalles del producto:', product);
+      return product;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  async function enviarOrden(order) {
+    try {
+      const response = await fetch(`${API_GATEWAY_URL}/api/ordenes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(order),
+      });
+      if (!response.ok) {
+        throw new Error('Error al enviar la orden');
+      }
+      console.log('Orden enviada con éxito');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function procesarPago(paymentData) {
+    try {
+      const response = await fetch(`${API_GATEWAY_URL}/api/pagos`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(paymentData),
+      });
+      if (!response.ok) {
+        throw new Error('Error al procesar el pago');
+      }
+      console.log('Pago procesado con éxito');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const products = await obtenerInventario();
   // Mostrar todos los productos al cargar la página
   renderProducts(products);
 
@@ -17,9 +78,10 @@ import { obtenerInventario } from '../../INVENTARIO/javaScript/inventario.js';
       const productCard = document.createElement('div');
       productCard.classList.add('card');
 
-      // Agregar evento de clic a la tarjeta
-      productCard.addEventListener('click', function() {
-        expandProduct(product.id);
+      // Agregar evento de clic para consultar el producto
+      productCard.addEventListener('click', async function() {
+        const detalles = await consultarProducto(product.id);
+        console.log('Detalles del producto mostrados en el modal:', detalles);
       });
 
       // Crear y configurar la imagen del producto
@@ -73,30 +135,20 @@ import { obtenerInventario } from '../../INVENTARIO/javaScript/inventario.js';
       document.getElementById('modal').classList.remove('hidden');
 
       // Asocia el evento "click" al botón de "Añadir al carrito" dentro del modal
-      document.getElementById('add-to-cart').onclick = function() {
+      document.getElementById('add-to-cart').addEventListener('click', function() {
+        const productId = document.getElementById('modal-id').value;
         const quantity = parseInt(document.getElementById('quantity-number').innerText);
-        const cartItem = cart.find(item => item.id === productId);
+        const product = products.find(p => p.id === productId);
 
-        // Verificar si el artículo ya está en el carrito
-        if (cartItem) {
-          cartItem.quantity += quantity;
-        } else {
-          cart.push({
-            id: product.id,
-            name: product.name,
-            price: parseFloat(product.price),
-            quantity: quantity
-          });
+        if (product) {
+          cart.push({ id: productId, name: product.name, quantity, price: product.price });
+          console.log('Producto agregado al carrito:', product);
+          enviarOrden({ productId, quantity }); // Enviar orden al microservicio de órdenes
         }
-
-        updateCartUI(); // Actualizar la interfaz del carrito y el total
-        showSuccessMessage(); // Mostrar el mensaje de éxito
-
-        // Cerrar el modal después de añadir al carrito (opcional)
-        // document.getElementById('modal').classList.add('hidden');
-      };
+      });
     }
   }
+
 
   // Hacer expandProduct accesible globalmente si es necesario
   window.expandProduct = expandProduct;
@@ -226,8 +278,9 @@ import { obtenerInventario } from '../../INVENTARIO/javaScript/inventario.js';
   }
 
   // Mostrar formulario de pago al hacer clic en "Proceder al pago"
-  document.getElementById('checkout-button').addEventListener('click', function () {
-    document.getElementById('payment-form').style.display = 'block';
+  document.getElementById('checkout-button').addEventListener('click', function() {
+    const paymentData = { cart, totalPrice };
+    procesarPago(paymentData); // Enviar datos al microservicio de pagos
   });
 
   // Procesar el pago y generar factura
